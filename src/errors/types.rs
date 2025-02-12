@@ -201,19 +201,19 @@ error_types! {
     // ---------------------
     // generic comparison errors
     GreaterThan {
-        gt: {ctx_type: Number, ctx_fn: field_from_context},
+        gt: {ctx_type: PyObject, ctx_fn: field_from_context},
     },
     GreaterThanEqual {
-        ge: {ctx_type: Number, ctx_fn: field_from_context},
+        ge: {ctx_type: PyObject, ctx_fn: field_from_context},
     },
     LessThan {
-        lt: {ctx_type: Number, ctx_fn: field_from_context},
+        lt: {ctx_type: PyObject, ctx_fn: field_from_context},
     },
     LessThanEqual {
-        le: {ctx_type: Number, ctx_fn: field_from_context},
+        le: {ctx_type: PyObject, ctx_fn: field_from_context},
     },
     MultipleOf {
-        multiple_of: {ctx_type: Number, ctx_fn: field_from_context},
+        multiple_of: {ctx_type: PyObject, ctx_fn: field_from_context},
     },
     FiniteNumber {},
     // ---------------------
