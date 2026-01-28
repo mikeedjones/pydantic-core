@@ -971,6 +971,26 @@ class TestOnError:
         assert v.validate_test({}) == {}
         assert v.validate_test({'x': ['foo']}) == {}
 
+    def test_on_error_omit_with_union(self, py_and_json: PyAndJson):
+        v = py_and_json(
+            {
+                'type': 'typed-dict',
+                'fields': {
+                    'x': {
+                        'type': 'typed-dict-field',
+                        'schema': {
+                            'type': 'union',
+                            'choices': [
+                                {'type': 'default', 'schema': {'type': 'int'}, 'on_error': 'omit'},
+                                {'type': 'default', 'schema': {'type': 'bool'}, 'on_error': 'omit'},
+                            ],
+                        },
+                    }
+                },
+            }
+        )
+        assert v.validate_test({'x': '123'}) == {'x': 123}
+
     def test_on_error_omit_with_default(self, py_and_json: PyAndJson):
         v = py_and_json(
             {
